@@ -1,26 +1,139 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #faf8f5;
+  --foreground: #1c1917;
+  --rose: #b76e79;
+  --rose-hover: #9e5a64;
+  --gold: #d4af37;
+  --stone: #e7e5e4;
+  --muted: #78716c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-jakarta);
+  --font-serif: var(--font-playfair);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jakarta), sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+::selection {
+  background: #e9c9cd;
+}
+
+.button-primary {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--rose);
+  padding: 0.7rem 1.25rem;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.button-primary:hover {
+  background: var(--rose-hover);
+}
+
+.button-secondary {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border: 1px solid var(--stone);
+  border-radius: 999px;
+  background: white;
+  padding: 0.6rem 1rem;
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.button-secondary:hover {
+  border-color: var(--rose);
+  background: #fdf7f7;
+}
+
+.nav-link {
+  color: #57534e;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: color 160ms ease;
+}
+
+.nav-link:hover {
+  color: var(--rose-hover);
+}
+
+.form-field {
+  display: grid;
+  gap: 0.45rem;
+  color: #44403c;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.form-control {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--stone);
+  border-radius: 0.85rem;
+  background: white;
+  padding: 0.7rem 0.9rem;
+  color: var(--foreground);
+  font-size: 0.9rem;
+  font-weight: 400;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.form-control:focus {
+  border-color: var(--rose);
+  box-shadow: 0 0 0 3px rgb(183 110 121 / 14%);
+}
+
+.form-control::placeholder {
+  color: #a8a29e;
+}
+
+.notice {
+  border-radius: 0.9rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.875rem;
 }
